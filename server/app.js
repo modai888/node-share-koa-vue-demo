@@ -45,6 +45,9 @@ function registerApiRoutes() {
 
 // route pages
 
+app.on('info', (msg)=>{
+    console.log(msg)
+})
 
 exports.startApplication = function (port, callback) {
     registerStaticServer();

@@ -4,7 +4,7 @@ let log = {};
 exports = module.exports = log;
 
 log.info = function info(msg) {
-    console.info('\x1b[32m%s\1b[0m', msg)
+    console.info('\x1b[32m%s\x1b[0m', msg)
 };
 
 
