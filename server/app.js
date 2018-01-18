@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const Router = require('koa-router')
 const api = require('./api');
 
 // exports our application
@@ -40,12 +41,19 @@ function registerConfiguration() {
 
 // route apis
 function registerApiRoutes() {
-    app.use(api.hello);
+    let apiRouter = new Router({
+        prefix: '/api'
+    })
+
+    apiRouter.get('/hello', api.hello);
+    apiRouter.get('/:user/friends', api.friends)
+
+    app.use(apiRouter.routes()).use(apiRouter.allowedMethods());
 }
 
 // route pages
 
-app.on('info', (msg)=>{
+app.on('info', (msg) => {
     console.log(msg)
 })
 

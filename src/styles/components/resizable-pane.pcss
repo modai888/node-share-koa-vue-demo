@@ -1,0 +1,81 @@
+:root {
+
+}
+
+.resizable-pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &.resizing {
+    cursor: ew-resize;
+
+    & * {
+      cursor: inherit;
+    }
+  }
+}
+
+.resizable-pane--stack {
+  &.resizing {
+    cursor: ns-resize;
+  }
+}
+
+.resizable-pane__panes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  cursor: inherit;
+
+  @nest .resizable-pane--stack > & {
+    flex-direction: column;
+  }
+}
+
+.gs-pane {
+  border: none;
+  position: relative;
+  cursor: inherit;
+  box-sizing: border-box;
+
+  @nest .resizable-pane & {
+    & + .pane-splitter + .gs-pane {
+      border-left: 1px solid var(--border-color);
+    }
+  }
+
+  @nest .resizable-pane--stack & {
+    & + .pane-splitter + .gs-pane {
+      border-top: 1px solid var(--border-color);
+    }
+  }
+}
+
+.gs-pane--free {
+  flex: 1;
+}
+
+.pane-splitter {
+  position: absolute;
+  width: 2px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: initial;
+  background-color: var(--border-color);
+  cursor: ew-resize;
+}
+
+.pane-splitter--stack {
+  height: 2px;
+  width: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: initial;
+  cursor: ns-resize;
+}

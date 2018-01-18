@@ -1,0 +1,66 @@
+:root {
+  --text-color: #7d7d7d;
+  --text-link-color: #1FB922
+}
+
+nav.app__sidebar {
+}
+
+.app__sidebar ul {
+  margin: 0 15px;
+  padding: 0;
+  color: var(--text-color);
+
+  & > li {
+    text-align: center;
+    padding: 8px 0;
+    list-style: none;
+  }
+
+  /* 重置链接样式 */
+  & a {
+    text-decoration: none;
+    color: inherit;
+
+    &.active,
+    &:hover,
+    &:active {
+      color: var(--text-link-color)
+    }
+
+  }
+}
+
+.app__sidebar .sidebar__avater {
+  height: 50px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.sidebar__avater img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.sidebar__avater + li {
+  margin-top: 20px;
+}
+
+.sidebar__navitem {
+  & > .inactive {
+    display: inline;
+  }
+  & > .active {
+    display: none;
+  }
+
+  &.active {
+    & > .inactive {
+      display: none;
+    }
+    & > .active {
+      display: inline;
+    }
+  }
+}

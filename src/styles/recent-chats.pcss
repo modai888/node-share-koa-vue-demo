@@ -1,0 +1,40 @@
+:root {
+  --text-overflow: {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 24px;
+  }
+}
+
+.recent-chats{
+  overflow: auto;
+}
+
+.chat-friend {
+  padding: 8px 8px 8px 12px;
+}
+
+.chat-friend__avator {
+  float: left;
+  height: 50px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.chat-friend__info {
+  padding-left: 8px;
+}
+
+.chat-friend__name {
+  font-size: 14px;
+  font-weight: bold;
+  @apply(--text-overflow);
+}
+
+.chat-friend__msg {
+  font-size: 14px;
+  color: #aaa;
+  @apply(--text-overflow);
+}
