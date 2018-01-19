@@ -20,6 +20,6 @@ if ( app.env === 'development' ) {
 
 // start-up our application
 app.startApplication(port, () => {
-    info('32m应用程序启动完毕，端口号:' + port);
+    info('应用程序启动完毕，端口号:' + port);
 });
 

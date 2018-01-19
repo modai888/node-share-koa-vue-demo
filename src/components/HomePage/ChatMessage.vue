@@ -1,7 +1,7 @@
 <template>
     <resizable-pane :is-stack="true" class="chat-view">
         <pane :free="true" class="chat-view__messages"
-              v-scroll-bottom="session.messages">
+              v-scroll-bottom>
             <ul v-if="session">
                 <li v-for="(item , i) in session.messages">
                     <p class="time" v-if="msgInterval(i) > 20">
@@ -15,7 +15,7 @@
             </ul>
         </pane>
         <pane class="chat-view__input">
-            <textarea placeholder="按CTRL键发送消息" v-model="message" @keydown.enter="send"/>
+            <textarea placeholder="按 CTRL 键发送消息" @keydown.enter="send" ref="chat"></textarea>
         </pane>
     </resizable-pane>
 </template>
@@ -44,21 +44,21 @@
         methods: {
             send(e) {
                 if ( e.ctrlKey ) {
-                    this.message += '\n';
                     return;
                 }
+                let message = this.$refs.chat.value;
 
-                if ( !this.message && !e.ctrlKey ) {
+                if ( !message && !e.ctrlKey ) {
                     e.preventDefault();
                     return false;
                 }
 
-                if ( this.message ) {
+                if ( message ) {
                     e.preventDefault();
                     this.$store.dispatch('SEND_CHAT_MESSAGE', {
-                        self: true, content: this.message
+                        self: true, content: message
                     });
-                    this.message = '';
+                    this.$refs.chat.value = ''
                 }
             },
             msgInterval(i) {
@@ -85,8 +85,12 @@
                         el.scrollTop = el.scrollHeight - el.clientHeight;
                     })
                 },
+
                 componentUpdated: function componentUpdated(el) {
-                    el.scrollTop = el.scrollHeight - el.clientHeight;
+                    Vue.nextTick(() => {
+                        el.scrollTop = el.scrollHeight - el.clientHeight;
+                    })
+                    // el.scrollTop = el.scrollHeight - el.clientHeight;
                 }
             }
         }
