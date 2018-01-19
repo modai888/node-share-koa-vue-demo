@@ -34,10 +34,9 @@
                     <header class="page__header">
                         微信聊天窗口
                     </header>
-                    <resizable-pane :is-stack="true" class="page__body">
-                        <pane :free="true" class="page__chart">111</pane>
-                        <pane class="page__input">222</pane>
-                    </resizable-pane>
+                    <div class="page__body">
+                        <chat-message></chat-message>
+                    </div>
                 </pane>
             </resizable-pane>
         </div>
@@ -47,10 +46,11 @@
 <script>
     import ResizablePane from './shared/resizable-pane/resizable-pane'
     import Pane from './shared/resizable-pane/pane'
+    import ChatMessage from './HomePage/ChatMessage'
 
     export default {
         name: "home-page",
-        components: { ResizablePane, Pane }
+        components: { ResizablePane, Pane, ChatMessage }
     }
 </script>
 

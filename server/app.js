@@ -47,6 +47,7 @@ function registerApiRoutes() {
 
     apiRouter.get('/hello', api.hello);
     apiRouter.get('/:user/friends', api.friends)
+    apiRouter.post('/chats', api.saveChatMessage)
 
     app.use(apiRouter.routes()).use(apiRouter.allowedMethods());
 }

@@ -19,7 +19,7 @@
 
   & .sidebar__header {
     height: var(--title-bar-height);
-    padding: 15px 0;
+    padding: 15px;
     display: flex;
     justify-content: center;
   }
@@ -31,8 +31,8 @@
 
   & .search-box {
     margin: -1px 0 0 0;
-    width: 200px;
-    outline: none;
+  //width: 200px; outline: none;
+    flex: 1;
 
     & input {
       padding: 2px 5px;
@@ -63,12 +63,11 @@
 }
 
 .page__body {
+  position: absolute;
   top: var(--title-bar-height);
-}
-
-.page__input {
-  height: 200px;
-  max-height: 300px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .pane--main__content {
