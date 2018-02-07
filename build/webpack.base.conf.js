@@ -95,6 +95,8 @@ module.exports = {
         new CopyWebpackPlugin([
             {
                 from: './src/service-worker.js'
+            }, {
+                from: 'favicon.ico'
             }
         ])
     ]

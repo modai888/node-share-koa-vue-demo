@@ -31,7 +31,6 @@ exports.saveChatMessage = function saveChatMessage(ctx, next) {
     })
 }
 
-
 function delay(interval) {
     return new Promise(resolve => {
         setTimeout(resolve, interval)

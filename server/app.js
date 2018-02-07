@@ -68,5 +68,9 @@ exports.startApplication = function (port, callback) {
 
     registerApiRoutes();
 
-    app.listen(port, callback)
+    if ( port ) {
+       return app.listen(port, callback)
+    }
+
+    return app.callback();
 }
