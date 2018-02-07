@@ -1,6 +1,8 @@
 const Koa = require('koa')
 const Router = require('koa-router')
 const cors = require('@koa/cors')
+const body = require('koa-better-body')
+const convert = require('koa-convert')
 const api = require('./api');
 
 // exports our application
@@ -61,6 +63,7 @@ app.on('info', (msg) => {
 
 exports.startApplication = function (port, callback) {
     registerStaticServer();
+    app.use(convert(body()))
     app.use(cors());
 
     app.use(entry);

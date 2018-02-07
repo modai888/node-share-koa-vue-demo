@@ -13,8 +13,9 @@ const mutations = {
 
 const actions = {
     SEND_CHAT_MESSAGE(store, { content, self }) {
-        chatsApi.sendChatMessage(content, {}).then(() => {
-            store.commit('ADD_CHAT_MESSAGE', { content: '哈哈', self: false })
+        chatsApi.sendChatMessage(content, {}).then((res) => {
+            var reply = res.data && res.data.reply;
+            store.commit('ADD_CHAT_MESSAGE', { content: reply, self: false })
         });
         store.commit('ADD_CHAT_MESSAGE', { content, self })
     }
@@ -46,7 +47,7 @@ export default {
                         content: 'Hello，这是一个基于Vue + Vuex + Webpack构建的简单chat示例，聊天记录保存在localStorge, 有什么问题可以通过Github Issue问我。',
                         date: Date.now()
                     }, {
-                        content: '项目地址: https://github.com/coffcer/vue-chat',
+                        content: '项目地址: https://gitlab.gridsum.com/wangxuebo/node-share-koa-vue-demo.git',
                         date: Date.now()
                     }
                 ]

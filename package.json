@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "cross-env NODE_ENV=dev supervisor -w server --inspect -- ./server/main.js --port 4848 ",
+    "start": "cross-env NODE_ENV=development supervisor -w server --inspect -- ./server/main.js --port 4848 ",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -23,6 +23,8 @@
     "@koa/cors": "^2.2.1",
     "axios": "^0.16.1",
     "koa": "^2.4.1",
+    "koa-better-body": "^3.0.4",
+    "koa-convert": "^1.2.0",
     "koa-router": "^7.3.0",
     "vue": "^2.5.13",
     "vue-router": "^2.5.3",
